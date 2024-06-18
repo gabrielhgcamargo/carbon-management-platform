@@ -5,19 +5,24 @@ import lombok.NonNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Document(collection = "user")
 public class User {
 
     @Id
-    @NonNull
     private String cnpj;
     private String razaoSocial;
-    private String adress;
+    private String address;
     private String email;
     private String password;
-    private String carbonCreditId;
+    private List<String> carbonCreditIds;
+    private Double creditAmount;
 
+    public User (){
+        this.creditAmount = 0.00d; // Inicialmente 0
+        this.carbonCreditIds = new ArrayList<>(); // Valor inicial padrão
+    }
 }

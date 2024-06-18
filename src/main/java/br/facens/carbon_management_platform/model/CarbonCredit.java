@@ -14,5 +14,4 @@ public class CarbonCredit {
     private double amount;
     private String owner;
 
-
 }
