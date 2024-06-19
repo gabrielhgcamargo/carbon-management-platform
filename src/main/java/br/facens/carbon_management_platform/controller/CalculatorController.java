@@ -5,10 +5,7 @@ import br.facens.carbon_management_platform.dto.CalculatorResponse;
 import br.facens.carbon_management_platform.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/calculator")
@@ -17,7 +14,7 @@ public class CalculatorController {
     @Autowired
     private CalculatorService service;
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<CalculatorResponse> calculateCarbonFootprint(@RequestBody CalculatorRequest request) {
 
         double emissaoTotal = service.calculateCarbonFootprint(request.getKwh(), request.getGasm3(), request.getGasBotijao(),
