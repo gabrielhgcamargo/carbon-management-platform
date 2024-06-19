@@ -18,6 +18,7 @@ public class CarbonCreditService {
     }
 
     public CarbonCredit save(CarbonCredit credit) {
+        credit.calculateCategoryPrice();
         return repository.save(credit);
     }
 

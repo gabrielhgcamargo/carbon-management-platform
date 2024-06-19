@@ -10,8 +10,13 @@ public class CarbonCredit {
 
     @Id
     private String id;
-    private String categoryName;
+    private CarbonCreditCategory categoryName;
     private double amount;
+    private double categoryPrice;
     private String owner;
+
+    public void calculateCategoryPrice() {
+        this.categoryPrice = this.amount * this.categoryName.getPriceMultiplier();
+    }
 
 }
