@@ -9,26 +9,22 @@ public class CalculatorService {
     private static final double EMISSAO_GAS_M3 = 2.0671;
     private static final double EMISSAO_GAS_BOTIJAO = 2.9380;
 
-    private static final double GASOLINA_KM_POR_LITRO = 10.0;
-    private static final double EMISSAO_GASOLINA_POR_KM = 0.1280;
-
-    private static final double ETANOL_KM_POR_LITRO = 7.0;
-    private static final double EMISSAO_ETANOL_POR_KM = 0.0019;
-
-    private static final double GNV_KM_PER_M3 = 14;
-    private static final double EMISSAO_GNV_POR_KM = 0.1630;
+    // Fatores de emissão para gasolina, etanol e GNV (em kg CO2e por litro)
+    private static final double EMISSAO_GASOLINA_POR_LITRO = 2.31;
+    private static final double EMISSAO_ETANOL_POR_LITRO = 1.94;
+    private static final double EMISSAO_GNV_POR_LITRO = 1.96;
 
     public double calculateCarbonFootprint(double  kwh, double gasm3, double gasBotijao,
-                                           double kmPercorridoGasolina,
-                                           double kmPercorridoGNV,
-                                           double kmPercorridoEtanol) {
+                                           double qtdGasolinaLitros,
+                                           double qtdGNVMetroCubico,
+                                           double qtdEtanolLitros) {
 
         double emissaoEletrecidade = kwh * EMISSAO_ELETRECIDADE_POR_KWH;
         double emissaoGasM3 = gasm3 * EMISSAO_GAS_M3;
         double emissaoGasBotijao = gasBotijao * EMISSAO_GAS_BOTIJAO;
-        double emissaoGasolina = (kmPercorridoGasolina / GASOLINA_KM_POR_LITRO) * EMISSAO_GASOLINA_POR_KM;
-        double emissaoEtanol = (kmPercorridoEtanol / ETANOL_KM_POR_LITRO) * EMISSAO_ETANOL_POR_KM;
-        double emissaoGNV = (kmPercorridoGNV / GNV_KM_PER_M3) * EMISSAO_GNV_POR_KM;
+        double emissaoGasolina = qtdGasolinaLitros * EMISSAO_GASOLINA_POR_LITRO;
+        double emissaoEtanol = qtdEtanolLitros  * EMISSAO_ETANOL_POR_LITRO;
+        double emissaoGNV = qtdGNVMetroCubico  * EMISSAO_GNV_POR_LITRO;
 
         return emissaoEletrecidade + emissaoGasM3 + emissaoGasBotijao + emissaoGasolina + emissaoEtanol + emissaoGNV;
     }

@@ -21,7 +21,7 @@ public class CalculatorController {
     public ResponseEntity<CalculatorResponse> calculateCarbonFootprint(@RequestBody CalculatorRequest request) {
 
         double emissaoTotal = service.calculateCarbonFootprint(request.getKwh(), request.getGasm3(), request.getGasBotijao(),
-                                                                request.getKmPercorridoGasolina(), request.getKmPercorridoGNV(), request.getKmPercorridoGNV());
+                                                                request.getQtdGasolinaLitros(), request.getQtdGNVMetroCubico(), request.getQtdEtanolLitros());
 
         CalculatorResponse response = new CalculatorResponse(emissaoTotal);
         return ResponseEntity.ok(response);
