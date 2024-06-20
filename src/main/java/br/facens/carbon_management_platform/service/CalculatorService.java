@@ -26,7 +26,9 @@ public class CalculatorService {
         double emissaoEtanol = qtdEtanolLitros  * EMISSAO_ETANOL_POR_LITRO;
         double emissaoGNV = qtdGNVMetroCubico  * EMISSAO_GNV_POR_LITRO;
 
-        return emissaoEletrecidade + emissaoGasM3 + emissaoGasBotijao + emissaoGasolina + emissaoEtanol + emissaoGNV;
+        double totalEmissao = emissaoEletrecidade + emissaoGasM3 + emissaoGasBotijao + emissaoGasolina + emissaoEtanol + emissaoGNV;
+
+        return Math.round(totalEmissao * 100.0) / 100.0;
     }
 
 }
