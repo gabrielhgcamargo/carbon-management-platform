@@ -14,6 +14,7 @@ public class CarbonCredit {
     private double amount;
     private double categoryPrice;
     private String owner;
+    private String detailedDescription;
 
     public void calculateCategoryPrice() {
         this.categoryPrice = this.amount * this.categoryName.getPriceMultiplier();
